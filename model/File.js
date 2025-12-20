@@ -23,8 +23,13 @@ const FileSchema = new mongoose.Schema(
     size: { type: Number },
     visibility: {
       type: String,
-      enum: ["private", "public"],
-      default: "private",
+      enum: ["PRIVATE", "PUBLIC"],
+      default: "PRIVATE",
+    },
+    status: {
+      type: String,
+      enum: ["PENDING", "UPLOADING", "COMPLETED"],
+      default: "PENDING",
     },
   },
   { timestamps: true }

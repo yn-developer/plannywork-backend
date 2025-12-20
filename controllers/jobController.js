@@ -23,7 +23,8 @@ const createJob = async (req, res, next) => {
   }
   const userId = user._id.toString();
   req.body.createdBy = userId;
-  req.body.attachedFileName = attachedFileName;
+  // req.body.attachedFileName = attachedFileName;
+  req.body.jobState = "created";
   req.body.jobDate = dateObj;
   try {
     const job = await Job.create(req.body);
@@ -34,6 +35,7 @@ const createJob = async (req, res, next) => {
     next(error);
   }
 };
+
 const updateJob = async (req, res, next) => {
   // const session = await mongoose.startSession();
   const { id: jobId } = req.params;

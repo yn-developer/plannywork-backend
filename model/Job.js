@@ -67,6 +67,11 @@ const JobSchema = new mongoose.Schema(
     attachedFileName: {
       type: String,
     },
+    jobState: {
+      type: String,
+      enum: ["DRAFT", "CREATED", "UPLOADING", "READY", "FAILED"],
+      default: "CREATED",
+    },
     createdBy: {
       type: mongoose.Types.ObjectId,
       ref: "User",
