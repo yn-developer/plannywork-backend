@@ -9,7 +9,8 @@ import fs from "fs";
 import autoCatch from "../utils/autoCatch.js";
 import getUserSession from "../utils/getUserSession.js";
 const saveJobDraft = async (req, res, next) => {
-  const { jobSheetNo, date } = req.body;
+  const { jobSheetNo, jobDate } = req.body;
+  console.log(jobSheetNo, jobDate);
   if (!jobSheetNo) {
     const error = new BadRequestError(`Please provide required fields`);
     return next(error);
@@ -22,8 +23,8 @@ const saveJobDraft = async (req, res, next) => {
     next(error);
   }
   // req.body.jobState = "DRAFT";
-  if (date) {
-    const cleanDate = JSON.parse(date);
+  if (jobDate) {
+    const cleanDate = JSON.parse(jobDate);
     const dateObj = new Date(cleanDate);
     req.body.jobDate = dateObj;
   }
